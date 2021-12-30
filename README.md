@@ -5,7 +5,7 @@
 The API that serves the generated number sets runs off of FastAPI and needs uvicorn to be installed.
 Command to set this up is:
 
-### FastAPI
+### FastAPI & Uvicorn
 
 ```
 pip install "uvicorn[standard]"
