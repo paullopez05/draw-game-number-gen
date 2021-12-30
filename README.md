@@ -8,6 +8,7 @@ Command to set this up is:
 ### FastAPI & Uvicorn
 
 ```
+pip install fastapi
 pip install "uvicorn[standard]"
 ```
 
