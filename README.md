@@ -19,6 +19,8 @@ pip install "uvicorn[standard]"
 
 ## API Usage
 
+### Url Query Parameters
+
 ```
 http://[url_address]/items/4?q=power_ball
 ```
