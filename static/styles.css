@@ -1,0 +1,25 @@
+body {
+  background-color: rgb(189, 178, 178);
+}
+
+.container {
+  margin: 0 auto;
+  width: 800px;
+  border: 1px solid #fff;
+  text-align: center;
+}
+
+.whiteball {
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 50%;
+  padding: 1rem;
+  margin: 10px;
+}
+
+.redball {
+  background-color: red;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 1rem;
+}

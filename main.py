@@ -1,16 +1,21 @@
+import random, sys, json, logging
 from typing import Optional
-import random, sys, logging
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
+templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def read_root():
 		return {"Show": "Root Page"}
 
 
-@app.get("/items/{count}")
-def read_item(count: int, q: Optional[str] = None):
+@app.get("/items/{count}", response_class=HTMLResponse)
+def read_item(request: Request, count: int, q: Optional[str] = None):
 	totalSets = int()
 	finalSet = []
 	setCounter = 0
@@ -27,18 +32,14 @@ def read_item(count: int, q: Optional[str] = None):
 		print(f"Printing 1 set of {gameType} numbers")
 		finalSet.append( generator(gameType) )
 
-	# resultSet = {"gameType": q}
 	resultSet = []
 	dict = {}
 
 	for key, i in enumerate(finalSet):
-		# resultSet[f"numset_{key+1}"] = i
-		# resultSet["gameType"]= q
-		# resultSet[f"numset_{key}"] = i
-		dict = {"gameType" : q,f"numset_{key+1}" : i}
+		dict = {"gameType" : q, "numset" : i}
 		resultSet.append(dict)
 
-	return resultSet
+	return templates.TemplateResponse("item.html", {"request": request, "results": resultSet})
 
 # Functions
 def generator(drawtype):
