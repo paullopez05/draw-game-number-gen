@@ -20,6 +20,8 @@ Once uvicorn is installed run the following command to serve the FastAPI app:
 python -m uvicorn
 ```
 
+### ToDo's left for this app
+
 - [x] create api to serve mega millions and powerball number sets
 - [] decide on jinja or a reactive framework to build front-end
 - [] create front end to pick game type and total number sets
