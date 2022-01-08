@@ -13,7 +13,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 def read_root():
 		return {"Show": "Root Page"}
 
-
 @app.get("/items/{count}", response_class=HTMLResponse)
 def read_item(request: Request, count: int, q: Optional[str] = None):
 	totalSets = int()

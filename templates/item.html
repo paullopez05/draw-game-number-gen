@@ -9,16 +9,25 @@
   </head>
   <body>
     <div class="container">
-      {{ results[0].gameType|replace('_', ' ')|title }}
-        {% for result in results %}
-          <h2 style="color: black"> 
-          {%- for num in result.numset[0:5] -%}
-            <span class="whiteball"> {{ num }} </span>
+      <div class="game-type-header">
+        <h1> {{ results[0].gameType|replace('_', ' ')|title }} </h1>
+      </div>
+      
+      {% for result in results %}
+      <div class="ticket-header">
+        Ticket #{{ loop.index }}
+      </div>
+      
+      <div class="ticket-set">
+    
+        {%- for num in result.numset -%}
+        <div class="items">  {{ num }} </div>
         {% endfor %}
-          <span class="redball"> {{ result.numset[5] }} </span>
-          </h2> 
-          <br>
-      {% endfor %}
+
+      </div>
+        {% endfor %}      
+          
     </div>
+    
   </body>
 </html>
